@@ -19,7 +19,7 @@ class Util
         $info = ['currency' => '', 'symbol' => [], 'pricescale' => [], 'description' => []];
         foreach (array_keys($data) as $key) {
             $info['symbol'][] = static::keyName($key);
-            $info['pricescale'][] = 10000000000000000000000;
+            $info['pricescale'][] = 100000000;
             $info['description'][] = static::keyName($key);
         }
         return $info;
