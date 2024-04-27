@@ -16,7 +16,7 @@ class Util
 
     public static function getSymInfo(array $data)
     {
-        $info = ['symbol' => [], 'pricescale' => [], 'description' => []];
+        $info = ['currency' => '', 'symbol' => [], 'pricescale' => [], 'description' => []];
         foreach (array_keys($data) as $key) {
             $info['symbol'][] = static::keyName($key);
             $info['pricescale'][] = 10000000000000000000000;
@@ -28,10 +28,10 @@ class Util
     public static function toRepoFiles(array $data)
     {
         file_put_contents('symbol_info/seed_deboorn_btcsupervaluemap.json', json_encode(static::getSymInfo($data)));
+
         foreach ($data as $key => $value) {
             $keyName = static::keyName($key);
-
-            $f = fopen("data/{$keyName}.csv", 'r+');
+            $f = fopen("data/{$keyName}.csv", 'w');
             foreach ($value as $row) {
                 fputcsv($f, [
                     date('Ymd\T', strtotime($row['t'])),
