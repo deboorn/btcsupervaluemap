@@ -27,7 +27,7 @@ class Util
 
     public static function toRepoFiles(array $data)
     {
-        file_put_contents('symbol_info/btcsupervaluemap.json', json_encode(static::getSymInfo($data)));
+        file_put_contents('symbol_info/seed_deboorn_btcsupervaluemap.json', json_encode(static::getSymInfo($data)));
         foreach ($data as $key => $value) {
             $keyName = static::keyName($key);
 
